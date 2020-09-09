@@ -1,0 +1,34 @@
+﻿[
+  {
+    "Key": "Hello",
+    "LocalizedValue": {
+      "fr": "Bonjour",
+      "en": "Hello",
+      "tr": "Merhaba"
+    }
+  },
+  {
+    "Key": "Home",
+    "LocalizedValue": {
+      "fr": "Accueil",
+      "en": "Home",
+      "tr": "Anasayfa"
+    }
+  },
+  {
+    "Key": "Contact",
+    "LocalizedValue": {
+      "fr": "Communication",
+      "en": "Contact",
+      "tr": "İletişim"
+    }
+  },
+  {
+    "Key": "Product",
+    "LocalizedValue": {
+      "fr": "Produit",
+      "en": "Product",
+      "tr": "Ürün"
+    }
+  }
+]

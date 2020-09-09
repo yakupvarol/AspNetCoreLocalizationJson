@@ -1,0 +1,77 @@
+﻿@inject AspNetCoreLocalizationJson.Helper.Localization.IdentityLocalizationService localizer
+@using AspNetCoreLocalizationJson.Helper.Route
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AspNetCoreLocalizationJson</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AspNetCoreLocalizationJson</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@localizer.GetLocalizedHtmlString("Home")</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@MyStaticHelper.RouteRedirectLang("tr")">tr</a> |
+                            <a href="@MyStaticHelper.RouteRedirectLang("en")">en</a> |
+                            <a href="@MyStaticHelper.RouteRedirectLang("fr")">fr</a> |
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/tr/aboutus">Türkçe Hakkımızda</a> |
+                            <a href="/en/aboutus">English About Us</a> |
+                            <a asp-route-lang="fr" asp-controller="aboutus">Français À propos de nous</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <a asp-route="@RouteNames.product" asp-route-lang="@MyStaticHelper.CookieLang" asp-route-val="@Url.FriendlyUrl(localizer.GetLocalizedHtmlString("Product"))" asp-route-productid="5" asp-route-id="12">@localizer.GetLocalizedHtmlString("Product") Cookie</a> |
+                    <a href="@RouteLink.Product(new RouteLinkDTO.Product { lang=MyStaticHelper.Lang, id=1, productid=10, val=Url.FriendlyUrl(localizer.GetLocalizedHtmlString("Product")) })">Item Route</a> |
+                    <a href="@RouteLink.ProductHeadersLang(new RouteLinkDTO.Product { id=1, productid=10, val=Url.FriendlyUrl(localizer.GetLocalizedHtmlString("Product")) })">Item Headers</a> |
+                    <br />
+                    <a asp-route="@RouteNames.contact" asp-route-lang="en" asp-route-id="12">@localizer.GetLocalizedHtmlString("Contact") en</a> |
+                    <a asp-route="@RouteNames.iletisim" asp-route-lang="tr" asp-route-id="12">@localizer.GetLocalizedHtmlString("Contact") tr</a> |
+                   
+                    <a href="@Url.Action("12","communication")">@MyStaticLocalizer.localizer("Contact") fr</a> |
+
+                    @Html.ActionLink(MyStaticLocalizer.localizer("Contact"), "12", "communication")
+
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - AspNetCoreLocalizationJson - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

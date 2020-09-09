@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@ViewBag.Hello
+<br />
+<br />
+@MyStaticLocalizer.localizer("Contact")
+
+<a href="/tr/blog/test">Blog Route</a>
+
+<br />
+<br />
+Translation
+<br />
+<a href="/en/news">Translation haberler en</a> |
+<a href="/tr/haberler">Translation haberler tr</a> |
+<a href="/fr/nouvelles">Translation haberler fr</a> |
+<br />
+<a href="/tr/haberler/liste">Translation haberler tr</a> |
+<a href="/tr/haberler/liste/1">Translation haberler tr</a> |
+
+<a href="/@MyStaticHelper.Lang/hizmetler/1">Hizmetler (TestRouteController)</a>
